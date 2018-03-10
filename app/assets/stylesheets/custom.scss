@@ -5,6 +5,7 @@
 
 /* mixins, variables, etc. */
 $app-grey: #F8F8F8;
+$app-yellow: #ECAD08;
 @mixin box-sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -64,4 +65,10 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+/* Forms */
+.form {
+  border: 2px solid $app-yellow;
+  padding: 16px;
 }

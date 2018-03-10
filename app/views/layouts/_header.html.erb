@@ -1,1 +1,5 @@
- <%= render 'layouts/logged_out_header' %>
+<% if logged_in? %>
+  <%= render 'layouts/logged_in_header' %>
+<% else %>
+  <%= render 'layouts/logged_out_header' %>
+<% end %>
