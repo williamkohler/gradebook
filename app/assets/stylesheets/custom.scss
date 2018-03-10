@@ -20,6 +20,22 @@ $app-grey: #F8F8F8;
   @include box-sizing;
 }
 
+
+/* Universal */
+.center {
+  text-align: center;
+}
+
+.jumbotron {
+  background-image: image-url('pencils');
+  background-position: center top;
+  background-size: cover;
+  min-height: 600px;
+  font-family: 'Raleway', sans-serif;
+  color: #a0a0a0;
+}
+
+
 /* Footer */
 footer {
   margin-top: 45px;
@@ -31,7 +47,7 @@ footer {
     color: grey;
 
     &:hover {
-      color: $app-grey;
+      color: inherit;
     }
   }
 
