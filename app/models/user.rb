@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   enum role: [:student, :teacher, :admin]
   after_initialize :set_default_role, if: :new_record?
+  has_many :student_course_relationships
+  has_many :courses, through: :student_course_relationships
 
   class << self
   # Returns the hash digest of the given string.
@@ -79,6 +81,16 @@ end
   # Returns true if a password reset has expired.
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def enroll(course)
+    if student?
+      courses << course
+    end
+  end
+
+  def drop(course)
+    courses.delete(course)
   end
 
   private

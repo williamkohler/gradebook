@@ -55,3 +55,5 @@ levels = [101, 202, 303]
                  credit: 4,
                  seats: 30)
 end
+
+# Student Course Relationships

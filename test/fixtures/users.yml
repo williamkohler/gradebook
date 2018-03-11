@@ -1,11 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  email: MyString
-  created_at: 2018-03-10 16:00:10
+student:
+  name: Student User
+  email: student@example.com
+  activated: true
+  role: <%= User.roles[:student] %>
+  activated_at: <%= Time.zone.now %>
 
-two:
-  name: MyString
-  email: MyString
-  created_at: 2018-03-10 16:00:10
+teacher:
+  name: Teacher User
+  email: teacher@example.com
+  activated: true
+  role: <%= User.roles[:teacher] %>
+  activated_at: <%= Time.zone.now %>
+
+admin:
+  name: Admin User
+  email: admin@example.com
+  activated: true
+  role: <%= User.roles[:admin] %>
+  activated_at: <%= Time.zone.now %>

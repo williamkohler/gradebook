@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  description: MyString
-  credit: 1
-  location: MyString
+biology:
+  name: Biology 101
+  description: <%= Faker::Lorem.sentence(3) %>
+  credit: 4
+  seats: 30
 
-two:
-  description: MyString
-  credit: 1
-  location: MyString
+math:
+  name: Math 202
+  description: <%= Faker::Lorem.sentence(3) %>
+  credit: 4
+  seats: 30
