@@ -68,17 +68,17 @@ footer {
 }
 
 /* Forms */
-.form {
+.app-form {
   border: 2px solid $app-yellow;
-  padding: 16px;
+  padding: 15px;
 }
 
-/* Forms */
 input,
 select .uneditable-input,
 textarea {
   border: 1px solid #bbb;
   width: 100%;
+  // margin-bottom: 15px;
   @include box-sizing;
 }
 
@@ -104,7 +104,7 @@ input {
 }
 
 .checkbox {
-  margin-top: -10px;
+  margin-top: 10px;
   margin-bottom: 10px;
 
   span {

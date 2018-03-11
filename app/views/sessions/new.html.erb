@@ -1,7 +1,7 @@
 <% provide(:title, "Log in") %>
 
 
-  <div class="form">
+  <div class="app-form">
     <% flash.each do |message_type, message| %>
       <span style="color:red"><%= message %></span>
     <% end %>
@@ -9,6 +9,7 @@
     <%= f.label :email %>
     <%= f.email_field :email, class: 'form-control' %>
     <%= f.label :password %>
+
     <%= link_to "(forgot password?)", new_password_reset_path %>
     <%= f.password_field :password, class: 'form-control' %>
     <%= f.label :remember_me, class: "checkbox inline" do %>
