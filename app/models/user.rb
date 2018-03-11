@@ -10,6 +10,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  enum role: [:student, :teacher, :admin]
+  after_initialize :set_default_role, if: :new_record?
 
   class << self
   # Returns the hash digest of the given string.
@@ -84,6 +86,11 @@ end
   # Converts email to all lower-case.
   def downcase_email
     email.downcase!
+  end
+
+  # The default user role
+  def set_default_role
+    self.role ||= :student
   end
 
   # Creates and assigns the activation token and digest.

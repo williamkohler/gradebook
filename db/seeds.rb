@@ -3,7 +3,7 @@ User.create!(name: 'Bill Kohler',
              email: 'bkohler4@gmail.com',
              password: 'foobar',
              password_confirmation: 'foobar',
-             admin: true,
+             role: :admin,
              activated: true,
              activated_at: Time.zone.now)
 
@@ -11,19 +11,30 @@ User.create!(name: 'Admin User',
             email: 'admin@example.com',
             password: 'foobar',
             password_confirmation: 'foobar',
-            admin: true,
+            role: :admin,
             activated: true,
             activated_at: Time.zone.now)
 
-User.create!(name: 'Standard User',
-            email: 'user@example.com',
+
+User.create!(name: 'Teacher User',
+            email: 'teacher@example.com',
             password: 'foobar',
             password_confirmation: 'foobar',
-            admin: false,
+            role: :teacher,
             activated: true,
             activated_at: Time.zone.now)
 
-97.times do |n|
+
+
+User.create!(name: 'Student User',
+            email: 'student@example.com',
+            password: 'foobar',
+            password_confirmation: 'foobar',
+            role: :student,
+            activated: true,
+            activated_at: Time.zone.now)
+
+96.times do |n|
   name = Faker::TwinPeaks.character
   password = 'foobar'
   User.create!(name: name,
