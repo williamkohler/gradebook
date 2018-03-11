@@ -1,7 +1,7 @@
 <% provide(:title, "Log in") %>
 
 
-  <div class="app-form">
+  <div class="col-md-6 col-md-offset-3">
     <% flash.each do |message_type, message| %>
       <span style="color:red"><%= message %></span>
     <% end %>
@@ -16,6 +16,6 @@
     <%= f.check_box :remember_me %>
     <span>Remember me on this computer</span>
   <% end %>
-  <%= f.submit "Log in", class: "btn label-warning submit-padding" %>
+  <%= f.submit "Log in", class: "btn" %>
 <% end %>
 </div>
