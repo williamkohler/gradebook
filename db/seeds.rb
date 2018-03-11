@@ -44,3 +44,14 @@ User.create!(name: 'Student User',
                activated: true,
                activated_at: Time.zone.now)
 end
+
+# Courses
+course_names = ["Biology", "Calculus", "Algebra", "American Literature",
+                "World History", "U.S. History", "Spanish", "French"]
+levels = [101, 202, 303]
+50.times do
+  Course.create!(name: "#{course_names.sample} #{levels.sample}",
+                 description: Faker::Lorem.sentence(3),
+                 credit: 4,
+                 seats: 30)
+end
