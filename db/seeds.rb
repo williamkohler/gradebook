@@ -15,7 +15,6 @@ User.create!(name: 'Admin User',
             activated: true,
             activated_at: Time.zone.now)
 
-
 User.create!(name: 'Teacher User',
             email: 'teacher@example.com',
             password: 'foobar',
@@ -23,8 +22,6 @@ User.create!(name: 'Teacher User',
             role: :teacher,
             activated: true,
             activated_at: Time.zone.now)
-
-
 
 User.create!(name: 'Student User',
             email: 'student@example.com',
@@ -37,10 +34,12 @@ User.create!(name: 'Student User',
 96.times do |n|
   name = Faker::TwinPeaks.character
   password = 'foobar'
+  roles = [:student, :teacher, :admin]
   User.create!(name: name,
                email: "example#{n+1}@thelodge.com",
                password: password,
                password_confirmation: password,
+               role: roles.sample,
                activated: true,
                activated_at: Time.zone.now)
 end
@@ -53,7 +52,14 @@ levels = [101, 202, 303]
   Course.create!(name: "#{course_names.sample} #{levels.sample}",
                  description: Faker::Lorem.sentence(3),
                  credit: 4,
-                 seats: 30)
+                 seats: 30,
+                 teacher_id: User.teacher.sample.id)
 end
 
-# Student Course Relationships
+# Student Enrollment
+User.student.each do |student|
+  4.times do
+    course = Course.find(rand(1..Course.count))
+    student.enroll(course) if student.courses.exclude?(course)
+  end
+end
