@@ -93,6 +93,10 @@ end
     courses.delete(course)
   end
 
+  def teach(course)
+    course.teacher_id = id
+  end
+
   private
 
   # Converts email to all lower-case.
