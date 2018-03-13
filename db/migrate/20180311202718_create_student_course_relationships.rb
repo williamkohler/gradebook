@@ -3,7 +3,7 @@ class CreateStudentCourseRelationships < ActiveRecord::Migration[5.1]
     create_table :student_course_relationships do |t|
       t.integer :user_id
       t.integer :course_id
-      t.float :grade
+      t.float :grade, default: 0
       t.timestamps
     end
     add_index :student_course_relationships, :user_id

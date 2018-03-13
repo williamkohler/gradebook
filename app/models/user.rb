@@ -105,6 +105,18 @@ end
     end
   end
 
+  def gpa
+    # formula: (grades * credits) / credits = gpa
+    total_credits = 0
+    total_value = 0
+    courses.each do |course|
+      value = course_grade(course) * course.credit
+      total_value += value
+      total_credits += course.credit
+    end
+    total_value /total_credits
+  end
+
   # Teachers
 
   def teach(course)
