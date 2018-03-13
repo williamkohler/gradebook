@@ -97,6 +97,10 @@ end
     course.teacher_id = id
   end
 
+  def courses_taught
+    Course.where(teacher_id: id)
+  end
+
   private
 
   # Converts email to all lower-case.

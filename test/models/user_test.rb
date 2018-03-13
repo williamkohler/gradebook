@@ -29,4 +29,15 @@ class UserTest < ActiveSupport::TestCase
     @teacher.teach @math
     assert @math.teacher == @teacher
   end
+
+  # TODO: finish test (when to reload teacher & class)
+  test 'teacher should get courses taught' do
+    assert @teacher.teacher?
+    assert @teacher.courses_taught.count == 0
+    @teacher.teach @math
+    @teacher.teach @bio
+    @teacher.reload
+  end
+
+
 end

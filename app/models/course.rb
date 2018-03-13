@@ -7,6 +7,10 @@ class Course < ApplicationRecord
     User.find(teacher_id)
   end
 
+  def remove_teacher
+    teacher_id = nil
+  end
+
   # Check if a teacher has been assigned to a course.
   def teacher_assigned?
     teacher_id.present?
