@@ -16,10 +16,19 @@ class Course < ApplicationRecord
     teacher_id?
   end
 
+  def course_enrollment
+    StudentCourseRelationship.where(course_id: id).count
+  end
+
+  # Calculates the average grade for a course
+  def average_grade
+  end
+
   def grade_student(student, grade)
     relationship = StudentCourseRelationship.where(course_id: id,
                                                    user_id: student.id).first
     relationship.grade = grade
     relationship.save!
   end
+
 end

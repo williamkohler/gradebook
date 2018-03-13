@@ -4,6 +4,7 @@ class CourseTest < ActiveSupport::TestCase
 
   def setup
     @student = users(:student)
+    @student_2 = users(:student_2)
     @teacher = users(:teacher)
     @admin = users(:admin)
     @bio = courses(:biology)
@@ -13,13 +14,13 @@ class CourseTest < ActiveSupport::TestCase
   test 'should get teacher' do
     assert_not @math.teacher_id?
     @teacher.teach @math
-    assert @math.teacher == @teacher
+    assert_equal @math.teacher, @teacher
   end
 
   test 'should remove teacher' do
     assert_not @bio.teacher_id?
     @teacher.teach @bio
-    assert @bio.teacher == @teacher
+    assert_equal @bio.teacher, @teacher
     @bio.remove_teacher
     @bio.reload
     assert_not @bio.teacher_assigned?
@@ -31,6 +32,13 @@ class CourseTest < ActiveSupport::TestCase
     assert @student.courses.include? @math
     @math.grade_student @student, 2
     @student.reload
-    assert @student.course_grade(@math) == 2
+    assert_equal @student.course_grade(@math), 2
+  end
+
+  test 'should get course enrollment count' do
+    @student.enroll @math
+    @student_2.enroll @math
+
+
   end
 end

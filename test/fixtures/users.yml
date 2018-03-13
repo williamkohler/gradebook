@@ -7,6 +7,13 @@ student:
   role: <%= User.roles[:student] %>
   activated_at: <%= Time.zone.now %>
 
+student_2:
+  name: Student User-2
+  email: student2@example.com
+  activated: true
+  role: <%= User.roles[:student] %>
+  activated_at: <%= Time.zone.now %>
+
 teacher:
   name: Teacher User
   email: teacher@example.com
