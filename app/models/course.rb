@@ -17,8 +17,9 @@ class Course < ApplicationRecord
   end
 
   def grade_student(student, grade)
-    relationship = student_course_relationships.where(course_id: id,
-                                                   user_id: student.id)
+    relationship = StudentCourseRelationship.where(course_id: id,
+                                                   user_id: student.id).first
     relationship.grade = grade
+    relationship.save!
   end
 end

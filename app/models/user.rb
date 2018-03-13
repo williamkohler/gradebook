@@ -101,7 +101,7 @@ end
     if student?
       relationships = StudentCourseRelationship.where(user_id: id,
                                                      course_id: course.id)
-      relationship.first.grade
+      relationships.first.grade
     end
   end
 

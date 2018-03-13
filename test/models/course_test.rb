@@ -30,6 +30,7 @@ class CourseTest < ActiveSupport::TestCase
     assert @math.students.include? @student
     assert @student.courses.include? @math
     @math.grade_student @student, 2
+    @student.reload
     assert @student.course_grade(@math) == 2
   end
 end
