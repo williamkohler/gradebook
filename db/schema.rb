@@ -22,16 +22,6 @@ ActiveRecord::Schema.define(version: 20180312015851) do
     t.integer "teacher_id"
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer "student_id"
-    t.integer "teacher_id"
-    t.integer "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["student_id", "course_id"], name: "index_relationships_on_student_id_and_course_id", unique: true
-    t.index ["teacher_id", "course_id"], name: "index_relationships_on_teacher_id_and_course_id", unique: true
-  end
-
   create_table "student_course_relationships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "course_id"

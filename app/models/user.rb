@@ -83,6 +83,8 @@ end
     reset_sent_at < 2.hours.ago
   end
 
+  # Students
+
   def enroll(course)
     if student?
       courses << course
@@ -94,6 +96,16 @@ end
       courses.delete(course)
     end
   end
+
+  def course_grade(course)
+    if student?
+      relationship = StudentCourseRelationship.find(user_id: id,
+                                                     course_id: course.id)
+      relationship.grade
+    end
+  end
+
+  # Teachers
 
   def teach(course)
     if teacher?

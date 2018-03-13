@@ -13,7 +13,12 @@ class Course < ApplicationRecord
 
   # Check if a teacher has been assigned to a course.
   def teacher_assigned?
-    teacher_id.present?
+    teacher_id?
   end
 
+  def grade_student(student, grade)
+    relationship = StudentCourseRelationship.find(course_id: id,
+                                                   user_id: student.id)
+    relationship.grade = grade
+  end
 end
