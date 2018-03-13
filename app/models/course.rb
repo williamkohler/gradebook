@@ -16,12 +16,18 @@ class Course < ApplicationRecord
     teacher_id?
   end
 
-  def course_enrollment
+  def enrollment
     StudentCourseRelationship.where(course_id: id).count
   end
 
   # Calculates the average grade for a course
   def average_grade
+    total = 0
+    relationships = StudentCourseRelationship.where(course_id: id)
+    relationships.each do |relationship|
+      total += relationship.grade
+    end
+    total / relationships.count
   end
 
   def grade_student(student, grade)

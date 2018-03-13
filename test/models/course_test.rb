@@ -38,7 +38,21 @@ class CourseTest < ActiveSupport::TestCase
   test 'should get course enrollment count' do
     @student.enroll @math
     @student_2.enroll @math
+    assert_equal @math.enrollment, 2
+    # Still get correct enrollment after a student drops the course.
+    @student.drop @math
+    assert_equal @math.enrollment, 1
+  end
+
+  test 'should get the average grade for the course' do
+    @student.enroll @math
+    @student_2.enroll @math
+    @math.grade_student(@student, 3.33)
+    @math.grade_student(@student_2, 2.5)
+    assert_equal @math.average_grade, 2.915
 
 
   end
+
+
 end
