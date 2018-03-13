@@ -90,15 +90,21 @@ end
   end
 
   def drop(course)
-    courses.delete(course)
+    if student?
+      courses.delete(course)
+    end
   end
 
   def teach(course)
-    course.teacher_id = id
+    if teacher?
+      course.teacher_id = id
+    end
   end
 
   def courses_taught
-    Course.where(teacher_id: id)
+    if teacher?
+      Course.where(teacher_id: id)
+    end
   end
 
   private
