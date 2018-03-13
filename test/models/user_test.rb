@@ -1,4 +1,3 @@
-
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
@@ -9,7 +8,6 @@ class UserTest < ActiveSupport::TestCase
     @admin = users(:admin)
     @bio = courses(:biology)
     @math = courses(:math)
-
   end
 
   test 'should enroll in a course' do
