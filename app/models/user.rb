@@ -99,9 +99,9 @@ end
 
   def course_grade(course)
     if student?
-      relationship = StudentCourseRelationship.find(user_id: id,
+      relationships = StudentCourseRelationship.where(user_id: id,
                                                      course_id: course.id)
-      relationship.grade
+      relationship.first.grade
     end
   end
 
