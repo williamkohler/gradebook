@@ -24,10 +24,14 @@ class Course < ApplicationRecord
   def average_grade
     total = 0
     relationships = StudentCourseRelationship.where(course_id: id)
-    relationships.each do |relationship|
-      total += relationship.grade
-    end
-    total / relationships.count
+    if relationships.count > 0
+      relationships.each do |relationship|
+        total += relationship.grade
+      end
+      total / relationships.count
+    else
+      return 0
+  end
   end
 
   def grade_student(student, grade)
@@ -36,5 +40,4 @@ class Course < ApplicationRecord
     relationship.grade = grade
     relationship.save!
   end
-
 end
