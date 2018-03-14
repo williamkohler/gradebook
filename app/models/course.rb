@@ -10,7 +10,7 @@ class Course < ApplicationRecord
   end
 
   def remove_teacher
-    teacher_id = nil
+    update_attribute(:teacher_id, nil)
   end
 
   # Check if a teacher has been assigned to a course.

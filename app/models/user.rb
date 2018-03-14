@@ -10,7 +10,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  enum role: [:student, :teacher, :admin]
+  enum role: %i[student teacher admin]
   after_initialize :set_default_role, if: :new_record?
   has_many :student_course_relationships
   has_many :courses, through: :student_course_relationships
@@ -25,11 +25,11 @@ class User < ApplicationRecord
 
   # Search for a user.
   def search(search)
-    if Rails.env.development?
-      query ='name like ?'
-    else
-      query = 'name ilike ?'
-    end
+    query = if Rails.env.development?
+              'name like ?'
+            else
+              'name ilike ?'
+            end
     User.where(query, "%#{search}%")
   end
 
@@ -86,35 +86,36 @@ end
   # Students
 
   def enroll(course)
-    if student?
-      courses << course
-    end
+    courses << course if student?
   end
 
   def drop(course)
-    if student?
-      courses.delete(course)
-    end
+    courses.delete(course) if student?
   end
 
   def course_grade(course)
     if student?
       relationships = StudentCourseRelationship.where(user_id: id,
-                                                     course_id: course.id)
+                                                      course_id: course.id)
       relationships.first.grade
     end
   end
 
   def gpa
-    # formula: (grades * credits) / credits = gpa
-    total_credits = 0
-    total_value = 0
-    courses.each do |course|
-      value = course_grade(course) * course.credit
-      total_value += value
-      total_credits += course.credit
+    # Make sure the student is enrolled in courses
+    if courses.count > 0
+      total_credits = 0
+      total_value = 0
+      courses.each do |course|
+        value = course_grade(course) * course.credit
+        total_value += value
+        total_credits += course.credit
+      end
+      # formula: (grades * credits) / credits = gpa
+      (total_value / total_credits).round(2) # round two for presentation
+    else
+      0
     end
-    (total_value /total_credits).round(2)
   end
 
   # Teachers
@@ -127,9 +128,7 @@ end
   end
 
   def courses_taught
-    if teacher?
-      Course.where(teacher_id: id)
-    end
+    Course.where(teacher_id: id) if teacher?
   end
 
   private
