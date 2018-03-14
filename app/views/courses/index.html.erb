@@ -1,6 +1,16 @@
 <% provide(:title, 'Courses') %>
 
-<h1>Courses</h1>
-<h2>Count: <%= @courses.count %></h2>
+<div class="index-header">
+  <h1>Courses</h1>
+  <h4>Total:
+    <%= @courses.count %>
+  </h4>
+</div>
 
-<%= render @courses %>
+  <div class="row">
+    <div class="col-md-5">
+      <%= render @courses %>
+    </div>
+  </div>
+
+  <%= will_paginate class: 'center' %>

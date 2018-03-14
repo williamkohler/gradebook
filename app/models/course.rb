@@ -1,7 +1,9 @@
 class Course < ApplicationRecord
+  default_scope -> { order(name: :asc) }
   has_many :student_course_relationships
   has_many :users, through: :student_course_relationships
   alias_attribute :students, :users
+
 
   def teacher
     User.find(teacher_id)

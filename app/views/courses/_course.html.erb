@@ -1,7 +1,6 @@
-<div class="course">
-  <h4><%= course.name %></h4>
+<div class="summary">
+  <h4><%= link_to course.name, course_path(course) %></h4>
   <h5><%= course.description %></h5>
-  <span>enrollment: <%= course.enrollment %></span><br>
-  <span>average grade: <%= course.average_grade %></span>
-
+  <h5><%= pluralize(course.enrollment, 'enrolled students') %></h5>
+  <h5>average grade: <%= course.average_grade %></h5>
 </div>

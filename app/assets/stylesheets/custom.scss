@@ -2,16 +2,15 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
 /* mixins, variables, etc. */
-$app-grey: #F8F8F8;
+$app-grey: #424242;
 $app-yellow: #ECAD08;
+$app-blue: #3097fd;
 @mixin box-sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -box-sizing: border-box;
 }
-
 /* Debugging */
 .debug_dump {
   clear: both;
@@ -20,7 +19,6 @@ $app-yellow: #ECAD08;
   margin-top: 45px;
   @include box-sizing;
 }
-
 
 /* Universal */
 .center {
@@ -35,8 +33,6 @@ $app-yellow: #ECAD08;
   font-family: 'Raleway', sans-serif;
   color: #a0a0a0;
 }
-
-
 /* Footer */
 footer {
   margin-top: 45px;
@@ -66,9 +62,7 @@ footer {
     }
   }
 }
-
 /* Forms */
-
 input,
 select .uneditable-input,
 textarea {
@@ -112,10 +106,35 @@ input {
   width: auto;
   margin-left: 0;
 }
+/* Index Pages */
+.index-header {
+  margin-bottom: 4%;
+  h1 {
+    color: $app-yellow;
+    border-bottom: 2px solid $app-blue;
+    padding-bottom: 8px;
+  }
+  h4 {
+    color: grey;
+  }
+}
+/* Summary */
+.summary {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  a {
+    text-decoration: none;
+    &:hover {
+      color: $app-blue;
+    }
+  }
 
+  h4 {
+    border-bottom: 2px solid $app-yellow;
+    padding-bottom: 2px;
+  }
 
-/* Courses */
-.course {
-  border-bottom: 2px solid blue;
-  margin-bottom: 12px
+  h5 {
+    color: $app-grey;
+  }
 }
