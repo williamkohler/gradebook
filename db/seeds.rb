@@ -69,3 +69,9 @@ StudentCourseRelationship.all.each do |relationship|
   relationship.update_attribute(:grade, rand(1.1..4).round(2))
   relationship.save!
 end
+
+# Teacher Courses
+teacher = User.find_by(email: 'teacher@example.com')
+Course.take(5).each do |course|
+  teacher.teach(course)
+end

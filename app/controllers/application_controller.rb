@@ -20,6 +20,17 @@ class ApplicationController < ActionController::Base
 
   # Confirms an admin user.
   def admin_user
-    redirect_to(user_path(current_user)) unless current_user.admin
+    redirect_to(user_path(current_user)) unless current_user.admin?
   end
+
+  def teacher_check
+    redirect_to(user_path(current_user)) unless current_user.teacher?
+  end
+
+  def student_check
+    redirect_to(user_path(current_user)) unless current_user.student?
+  end
+
+
+
 end

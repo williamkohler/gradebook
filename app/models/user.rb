@@ -122,6 +122,7 @@ end
   def teach(course)
     if teacher?
       course.teacher_id = id
+      course.save!
     end
   end
 
