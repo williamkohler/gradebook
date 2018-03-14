@@ -1,5 +1,13 @@
 <% if logged_in? %>
-  <%= render 'logged_in_home' %>
+  <% if current_user.admin? %>
+  <%= render 'admin_home' %>
+  <% elsif current_user.teacher? %>
+  <%= render 'teacher_home' %>
+  <% elsif current_user.student? %>
+  <%= render 'student_home' %>
+  <% else %>
+  <%= render 'logged_out_home' %>
+  <% end %>
 <% else %>
   <%= render 'logged_out_home' %>
 <% end %>
