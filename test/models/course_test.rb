@@ -49,6 +49,6 @@ class CourseTest < ActiveSupport::TestCase
     @student_2.enroll @math
     @math.grade_student(@student, 3.33)
     @math.grade_student(@student_2, 2.5)
-    assert_equal @math.average_grade, 2.915
+    assert_equal @math.average_grade, 2.92
   end
 end
