@@ -1,5 +1,5 @@
 <div class="summary">
   <h4><%= link_to course.name, course_path(course) %></h4>
   <h5><%= course.description %></h5>
-  <h5>current grade: <%= @user.course_grade(course) %></h5>
+  <h5>current grade: <% @user.course_grade(course) %>/ <%= Course.letter_grade(@user.course_grade(course)) %></h5>
 </div>

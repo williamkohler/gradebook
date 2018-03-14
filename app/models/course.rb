@@ -42,4 +42,30 @@ class Course < ApplicationRecord
     relationship.grade = grade
     relationship.save!
   end
+
+  def self.letter_grade(grade)
+    if grade == 4
+      "A"
+    elsif grade > 3.7
+      "A-"
+    elsif grade > 3.3
+      "B+"
+    elsif grade > 3
+      "B"
+    elsif grade > 2.7
+      "B-"
+    elsif grade > 2.3
+      "C+"
+    elsif grade > 1
+      "C"
+    elsif grade > 1.7
+      "C-"
+    elsif grade > 1.3
+      "D+"
+    elsif grade > 1.0
+      "D"
+    else
+      "F"
+    end
+  end
 end
