@@ -5,8 +5,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @students = @course.students
+    @students = @course.students.paginate(page: params[:page], per_page: 10)
   end
-
 
 end

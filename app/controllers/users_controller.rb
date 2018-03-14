@@ -57,6 +57,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def students
+    @students = User.student.paginate(page: params[:page], per_page: 20)
+  end
+
   private
 
   def user_params

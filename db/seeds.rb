@@ -63,3 +63,8 @@ User.student.each do |student|
     student.enroll(course) if student.courses.exclude?(course)
   end
 end
+
+# Grades
+StudentCourseRelationship.all.each do |relationship|
+  relationship.grade = rand(1.1..4).round(2)
+end
