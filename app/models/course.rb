@@ -30,7 +30,7 @@ class Course < ApplicationRecord
       relationships.each do |relationship|
         total += relationship.grade
       end
-      total / relationships.count
+      (total / relationships.count).round(2)
     else
       return 0
   end

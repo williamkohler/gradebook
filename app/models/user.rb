@@ -114,7 +114,7 @@ end
       total_value += value
       total_credits += course.credit
     end
-    total_value /total_credits
+    (total_value /total_credits).round(2)
   end
 
   # Teachers

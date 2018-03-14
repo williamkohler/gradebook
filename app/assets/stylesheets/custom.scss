@@ -6,6 +6,7 @@
 $app-grey: #424242;
 $app-yellow: #ECAD08;
 $app-blue: #3097fd;
+$app-darker-blue: #377BB5;
 @mixin box-sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -19,7 +20,6 @@ $app-blue: #3097fd;
   margin-top: 45px;
   @include box-sizing;
 }
-
 /* Universal */
 .center {
   text-align: center;
@@ -109,11 +109,13 @@ input {
 /* Index Pages */
 .index-header {
   margin-bottom: 4%;
+
   h1 {
     color: $app-yellow;
     border-bottom: 2px solid $app-blue;
     padding-bottom: 8px;
   }
+
   h4 {
     color: grey;
   }
@@ -122,14 +124,17 @@ input {
 .summary {
   margin-bottom: 12px;
   padding-bottom: 12px;
+
   a {
     text-decoration: none;
+
     &:hover {
       color: $app-blue;
     }
   }
 
   h4 {
+    color: $app-darker-blue;
     border-bottom: 2px solid $app-yellow;
     padding-bottom: 2px;
   }

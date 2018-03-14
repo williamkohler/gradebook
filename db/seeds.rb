@@ -66,5 +66,6 @@ end
 
 # Grades
 StudentCourseRelationship.all.each do |relationship|
-  relationship.grade = rand(1.1..4).round(2)
+  relationship.update_attribute(:grade, rand(1.1..4).round(2))
+  relationship.save!
 end
