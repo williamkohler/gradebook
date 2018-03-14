@@ -39,6 +39,11 @@ module SessionsHelper
    current_user.admin?
  end
 
+ # Returns true if the current user is a staff member
+ def staff?
+   true unless current_user.student?
+ end
+
  # Forgets a persistent session.
  def forget(user)
    user.forget
