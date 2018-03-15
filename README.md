@@ -50,7 +50,7 @@ $ rails server
 
 * Log in as an administrator with username: 'admin@example.com' / password: 'foobar'.
 * The administrator can view all courses with the course's enrollment count.
-* Administrators will also see a courses average grade.
+* Administrators will also see a course's average grade.
 
 
 ## Questions?
