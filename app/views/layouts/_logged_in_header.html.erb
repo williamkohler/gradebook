@@ -11,12 +11,14 @@
       <%= link_to 'GRADEBOOK', user_path(current_user), class: 'navbar-brand' %>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <% if staff? %>
+
         <ul class="nav navbar-nav navbar-right">
+          <% if staff? %>
           <li>
             <%= link_to 'Students', students_path %>
           </li>
           <li><%= link_to 'Courses', courses_path %></li>
+          <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings
               <span class="caret"></span></a>
@@ -26,7 +28,6 @@
             </ul>
           </li>
         </ul>
-      <% end %>
     </div>
     <!-- /.navbar-collapse -->
   </div>

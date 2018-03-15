@@ -13,7 +13,7 @@ class StudentCourseRelationshipTest < ActiveSupport::TestCase
                                                       course_id: @math.id)
   end
 
-  test 'grade should be invalid' do
+  test 'grade should be be between 0 and 4' do
     assert @relationship.valid?
     new_relationship = StudentCourseRelationship.new(user_id: @student_2.id,
                                                      course_id: @math.id)

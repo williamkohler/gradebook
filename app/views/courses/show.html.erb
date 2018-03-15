@@ -1,18 +1,42 @@
-<% provide(:title, 'Courses') %>
+<% provide(:title, @course.name) %>
 
   <div class="row">
     <div class="col-md-7 index-header">
       <h1><%= @course.name %></h1>
-      <h4><%= @course.description %></h4>
-      <h4><%= pluralize(@course.enrollment, 'enrolled students') %></h4>
-    </div>
-    <div class="col-md-5">
-      <div class="index-header">
-        <h1>Students</h1>
+
+      <% if current_user.teacher? %>
+        <% if current_user.courses_taught.include? @course %>
+
+          <h5><%= link_to 'drop', course_path(course: {
+                                              teacher_id: current_user.id,
+                                              course_id: @course.id,
+                                              drop_teacher: true } ),
+                                              method: :patch,
+                                              data: {
+                                              confirm:
+                                              "Stop teaching #{@course.name}?" }
+                                              %></h5>
+
+          <% elsif !@course.teacher_id? %>
+          <h5><%= link_to 'Sign up to teach', course_path(course: {
+                                              teacher_id: current_user.id,
+                                              course_id: @course.id,
+                                              add_teacher: true } ),
+                                              method: :patch %>
+
+            </h5>
+          <% end %>
+        <% end %>
+
+        <h4><%= @course.description %></h4>
+        <h4><%= pluralize(@course.enrollment, 'enrolled students') %></h4>
       </div>
-      <%= render partial: 'users/student_course_summary', collection: @students, as: :student %>
+      <div class="col-md-5">
+        <div class="index-header">
+          <h1>Students</h1>
+        </div>
+        <%= render partial: 'users/student_course_summary', collection: @students, as: :student %>
+      </div>
     </div>
-  </div>
 
-
-  <%= will_paginate @students, class: 'center' %>
+    <%= will_paginate @students, class: 'center' %>

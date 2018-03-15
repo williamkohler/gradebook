@@ -2,6 +2,8 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
+  #TODO find why this before action breaks
+  # before_destory :remove_teacher_from_courses
   default_scope -> { order(name: :asc) }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\- ]+)*\.[a-z]+\z/i
@@ -146,5 +148,11 @@ end
   def create_activation_digest
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
+  end
+
+  def remove_teacher_from_courses
+    Course.where(teacher_id: id).each do |course|
+      course.remove_teacher
+    end
   end
 end

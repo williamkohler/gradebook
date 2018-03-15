@@ -50,7 +50,7 @@ course_names = ["Biology", "Calculus", "Algebra", "American Literature",
 levels = [101, 202, 303]
 50.times do
   Course.create!(name: "#{course_names.sample} #{levels.sample}",
-                 description: Faker::Lorem.sentence(8),
+                 description: 'The course description will go here',
                  credit: 4,
                  seats: 30,
                  teacher_id: User.teacher.sample.id)

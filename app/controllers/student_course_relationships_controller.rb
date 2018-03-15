@@ -23,7 +23,7 @@ class StudentCourseRelationshipsController < ApplicationController
   private
 
   def relationship_params
-    params.require(:student_course_relationship).permit(:user_id, :course_id)
+    params.require(:relationship).permit(:user_id, :course_id)
   end
 
   # Before filters
@@ -35,7 +35,6 @@ class StudentCourseRelationshipsController < ApplicationController
     if @user.student?
       @relationship = StudentCourseRelationship.new(user_id: @user.id,
                                                     course_id: @course.id)
-    else
-      flash[:warning] = "#{@user} is not a student."
     end
+  end
 end

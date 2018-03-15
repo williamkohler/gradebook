@@ -46,4 +46,6 @@ class UserTest < ActiveSupport::TestCase
     @bio.grade_student(@student, 4)
     assert_equal(3.5, @student.gpa)
   end
+
+  
 end

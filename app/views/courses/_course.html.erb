@@ -1,6 +1,12 @@
 <div class="summary">
   <h4><%= link_to course.name, course_path(course) %></h4>
+
   <h5><%= course.description %></h5>
+  <% if course.teacher? %>
+  <h5>Teacher: <%= course.teacher.name %></h5>
+  <% end %>
   <h5><%= pluralize(course.enrollment, 'enrolled students') %></h5>
-  <h5>average grade: <%= course.average_grade %></h5>
+  <h5>average grade: <%= course.average_grade %>
+    (<%= Course.letter_grade(course.average_grade) %>)
+  </h5>
 </div>

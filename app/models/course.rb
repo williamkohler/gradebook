@@ -9,6 +9,10 @@ class Course < ApplicationRecord
     User.find(teacher_id)
   end
 
+  def teacher?
+    teacher_id?
+  end
+
   def remove_teacher
     update_attribute(:teacher_id, nil)
   end

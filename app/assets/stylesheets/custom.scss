@@ -4,6 +4,7 @@
 @import "font-awesome";
 /* mixins, variables, etc. */
 $app-grey: #424242;
+$app-light-grey: #b7b7b7;
 $app-yellow: #ECAD08;
 $app-blue: #3097fd;
 $app-darker-blue: #377BB5;
@@ -23,6 +24,12 @@ $app-darker-blue: #377BB5;
 /* Universal */
 .center {
   text-align: center;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .jumbotron {
