@@ -2,7 +2,6 @@
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
-  # TODO: find why this before action breaks
   before_destroy :remove_teacher_from_courses
   default_scope -> { order(name: :asc) }
   validates :name,  presence: true, length: { maximum: 50 }

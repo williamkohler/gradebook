@@ -30,13 +30,13 @@ class UserTest < ActiveSupport::TestCase
     assert @math.teacher == @teacher
   end
 
-  # TODO: finish test (when to reload teacher & class)
   test 'teacher should get courses taught' do
     assert @teacher.teacher?
-    assert_equal(@teacher.courses_taught.count, 0)
+    assert_equal 0, @teacher.courses_taught.count
     @teacher.teach @math
     @teacher.teach @bio
     @teacher.reload
+    assert_equal 2, @teacher.courses_taught.count
   end
 
   test 'should calculate gpa' do

@@ -10,7 +10,6 @@ class CoursesController < ApplicationController
     @students = @course.students.paginate(page: params[:page], per_page: 10)
   end
 
-  # TODO: write update controller tests
   def update
     @course = Course.find(course_params[:course_id])
     @teacher = User.find(course_params[:teacher_id])
