@@ -1,6 +1,6 @@
 # Gradebook
 
-Gradebook application for teachers students and administrators to manage courses.
+A gradebook application for teachers students and administrators to manage courses.
 
 ## Getting started
 
@@ -42,13 +42,17 @@ $ rails server
 
 ## Students
 
-* A Student can see the courses he is registered for (with grades)
-* A Student can see his GPA for a given semester
+* Log in as a student with username: 'student@example.com' / password: 'foobar'.
+* When a student logs in they will see their GPA.
+* The student will also see a list of  courses they are enrolled in and their grade for the course.
 
 ## Administrators
 
-* An Administrator can view enrollment counts across all courses for a semester.
-* An Administrator can view an average grade for a given course.
+* Log in as an administrator with username: 'admin@example.com' / password: 'foobar'.
+* The administrator can view all courses with the course's enrollment count.
+* Administrators will also see a courses average grade.
 
+
+## Questions?
 
 For more information, contact Bill Kohler bkohler4@gmail.com
