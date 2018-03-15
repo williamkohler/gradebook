@@ -4,9 +4,8 @@ class Course < ApplicationRecord
   has_many :users, through: :student_course_relationships
   alias_attribute :students, :users
 
-
   def teacher
-    User.find(teacher_id)
+    User.find(teacher_id) if teacher_id?
   end
 
   def teacher?
@@ -49,27 +48,27 @@ class Course < ApplicationRecord
 
   def self.letter_grade(grade)
     if grade == 4
-      "A"
+      'A'
     elsif grade > 3.7
-      "A-"
+      'A-'
     elsif grade > 3.3
-      "B+"
+      'B+'
     elsif grade > 3
-      "B"
+      'B'
     elsif grade > 2.7
-      "B-"
+      'B-'
     elsif grade > 2.3
-      "C+"
+      'C+'
     elsif grade > 1
-      "C"
+      'C'
     elsif grade > 1.7
-      "C-"
+      'C-'
     elsif grade > 1.3
-      "D+"
+      'D+'
     elsif grade > 1.0
-      "D"
+      'D'
     else
-      "F"
+      'F'
     end
   end
 end

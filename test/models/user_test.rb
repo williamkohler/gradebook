@@ -47,5 +47,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal(3.5, @student.gpa)
   end
 
-  
+  test 'deleting a teacher should also remove the id from course records' do
+    @teacher.teach @math
+    assert_equal @teacher, @math.teacher
+    @teacher.destroy
+    @math.reload
+    assert_equal nil, @math.teacher
+  end
+
+
 end
