@@ -113,8 +113,8 @@ input {
   width: auto;
   margin-left: 0;
 }
-/* Index Pages */
-.index-header {
+/* Titles */
+.title-header {
   margin-bottom: 4%;
 
   h1 {
@@ -149,4 +149,10 @@ input {
   h5 {
     color: $app-grey;
   }
+}
+
+
+/* Forms */
+.btn-margin {
+  margin-top: 10px;
 }

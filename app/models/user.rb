@@ -103,6 +103,13 @@ end
     end
   end
 
+  def course_grade_summary(course)
+    grade = course_grade(course)
+    "#{grade} (#{Course.letter_grade(grade)})"
+  end
+
+
+
   def gpa
     # Make sure the student is enrolled in courses
     if courses.count > 0

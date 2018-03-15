@@ -8,12 +8,10 @@ class UsersShowTest < ActionDispatch::IntegrationTest
     @admin = users(:admin)
   end
 
-  test 'should show admin dashboard' do
+  test 'admin should be redirected to courses index' do
     log_in_as @admin
-    assert_redirected_to @admin
     follow_redirect!
-    assert_template 'users/show'
-    assert_template partial: "users/_admin_dashboard"
+    assert_template 'courses/index'
   end
 
   test 'should show teacher dashboard' do

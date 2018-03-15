@@ -1,13 +1,15 @@
 <% provide(:title, @course.name) %>
 
   <div class="row">
-    <div class="col-md-7 index-header">
+    <div class="col-md-7 title-header">
       <h1><%= @course.name %></h1>
+
+      <div class="summary">
 
       <% if current_user.teacher? %>
         <% if current_user.courses_taught.include? @course %>
 
-          <h5><%= link_to 'drop', course_path(course: {
+          <h5><%= link_to 'Drop', course_path(course: {
                                               teacher_id: current_user.id,
                                               course_id: @course.id,
                                               drop_teacher: true } ),
@@ -25,14 +27,18 @@
                                               method: :patch %>
 
             </h5>
+            <% else %>
+            <h5>Teacher: <%= @course.teacher.name %></h5>
           <% end %>
         <% end %>
 
-        <h4><%= @course.description %></h4>
-        <h4><%= pluralize(@course.enrollment, 'enrolled students') %></h4>
+        <h5><%= @course.description %></h4>
+        <h5><%= pluralize(@course.enrollment, 'enrolled students') %></h4>
+        <h5>average grade: <%= @course.average_grade_summary %></h5>
+        </div>
       </div>
       <div class="col-md-5">
-        <div class="index-header">
+        <div class="title-header">
           <h1>Students</h1>
         </div>
         <%= render partial: 'users/student_course_summary', collection: @students, as: :student %>

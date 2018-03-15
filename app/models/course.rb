@@ -71,4 +71,11 @@ class Course < ApplicationRecord
       'F'
     end
   end
+
+  # Provides the number & letter for the average grade
+  def average_grade_summary
+    "#{average_grade} (#{Course.letter_grade(average_grade)})"
+  end
+
+
 end

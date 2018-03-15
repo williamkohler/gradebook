@@ -1,9 +1,5 @@
 <% provide(:title, @user.name) %>
 
-<div class="index-header">
-  <h1><%= @user.name %></h1>
-</div>
-
 <% if current_user.admin? %>
   <%= render 'admin_dashboard' %>
 <% elsif current_user.teacher? %>

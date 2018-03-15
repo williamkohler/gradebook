@@ -17,11 +17,14 @@ class CoursesController < ApplicationController
     if course_params[:drop_teacher]
       @course.remove_teacher
       flash[:warning] = "You are no longer teaching #{@course.name}."
+      redirect_to @teacher
     elsif course_params[:add_teacher]
       @teacher.teach @course
       flash[:success] = "You are now teaching #{@course.name}."
+      redirect_to @course
+    else
+      redirect_to root_path
     end
-    redirect_to @course
   end
 
   def course_params

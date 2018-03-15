@@ -52,7 +52,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal @teacher, @math.teacher
     @teacher.destroy
     @math.reload
-    assert_equal nil, @math.teacher
+    assert_nil nil, @math.teacher
   end
 
   test 'facutly check' do

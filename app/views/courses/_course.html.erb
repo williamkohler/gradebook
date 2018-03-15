@@ -1,9 +1,28 @@
 <div class="summary">
   <h4><%= link_to course.name, course_path(course) %></h4>
-
   <h5><%= course.description %></h5>
   <% if course.teacher? %>
+  <% if course.teacher == current_user %>
+  <h5><%= link_to 'Drop', course_path(course, course: {
+                                              teacher_id: current_user.id,
+                                              course_id: course.id,
+                                              drop_teacher: true } ),
+                                              method: :patch,
+                                              data: {
+                                              confirm:
+                                              "Stop teaching #{course.name}?" }
+                                              %></h5>
+  <% else %>
   <h5>Teacher: <%= course.teacher.name %></h5>
+  <% end %>
+  <% else %>
+  <h5><%= link_to 'Sign up to teach', course_path(course, course: {
+                                              teacher_id: current_user.id,
+                                              course_id: course.id,
+                                              add_teacher: true } ),
+                                              method: :patch
+                                              %></h5>
+
   <% end %>
   <h5><%= pluralize(course.enrollment, 'enrolled students') %></h5>
   <h5>average grade: <%= course.average_grade %>
