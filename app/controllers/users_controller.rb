@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user,  only: %i[index edit update destroy
                                            following followers]
   before_action :admin_user,      only: %i[destroy]
-  before_action :faculty_check,   only: %i[index new create edit update]
+  before_action :faculty_check,   only: %i[index create edit update]
 
   def index
     if params[:search]
