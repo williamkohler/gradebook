@@ -1,5 +1,6 @@
 class StudentCourseRelationshipsController < ApplicationController
   before_action :build_relationship, only: :create
+  before_action :faculty_check
 
   def create
     if @relationship.save

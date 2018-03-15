@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :teacher_check, only: %i[index]
+  before_action :faculty_check
 
   def index
     @courses = Course.all.paginate(page: params[:page], per_page: 10)
