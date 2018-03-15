@@ -2,7 +2,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
-  #TODO find why this before action breaks
+  # TODO: find why this before action breaks
   before_destroy :remove_teacher_from_courses
   default_scope -> { order(name: :asc) }
   validates :name,  presence: true, length: { maximum: 50 }
@@ -133,6 +133,15 @@ end
     Course.where(teacher_id: id) if teacher?
   end
 
+  # Faculty
+  def faculty?
+    if teacher? || admin?
+      true
+    else
+      false
+    end
+  end
+
   private
 
   def downcase_email
@@ -151,8 +160,6 @@ end
   end
 
   def remove_teacher_from_courses
-    Course.where(teacher_id: id).each do |course|
-      course.remove_teacher
-    end
+    Course.where(teacher_id: id).each(&:remove_teacher)
   end
 end

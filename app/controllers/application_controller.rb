@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
     redirect_to(user_path(current_user)) unless current_user.student?
   end
 
-
-
+  def faculty_check
+    redirect_to(user_path(current_user)) unless current_user.faculty?
+  end
 end

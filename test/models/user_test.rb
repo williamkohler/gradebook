@@ -55,5 +55,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal nil, @math.teacher
   end
 
+  test 'facutly check' do
+    assert @teacher.faculty?
+    assert @admin.faculty?
+    assert_not @student.faculty?
+  end
+
 
 end
