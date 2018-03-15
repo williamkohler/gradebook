@@ -18,7 +18,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     redirect_to(root_url) unless @user.activated?
-    @courses = user_courses
+    if current_user.admin?
+      redirect_to courses_path
+    else
+      @courses = user_courses
+  end
   end
 
   def new

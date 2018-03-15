@@ -1,8 +1,6 @@
 <% provide(:title, @user.name) %>
 
-<% if current_user.admin? %>
-  <%= render 'admin_dashboard' %>
-<% elsif current_user.teacher? %>
+<% if current_user.teacher? %>
   <%= render 'teacher_dashboard' %>
 <% elsif current_user.student? %>
   <%= render 'student_dashboard' %>

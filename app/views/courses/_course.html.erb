@@ -15,7 +15,7 @@
   <% else %>
   <h5>Teacher: <%= course.teacher.name %></h5>
   <% end %>
-  <% else %>
+  <% elsif current_user.teacher? %>
   <h5><%= link_to 'Sign up to teach', course_path(course, course: {
                                               teacher_id: current_user.id,
                                               course_id: course.id,
